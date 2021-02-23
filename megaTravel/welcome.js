@@ -17,9 +17,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     //setup clock
     updating = setInterval(time, 1000);
 
-    //set up activities
-    addActivities();
-
     //add click events
     addEvents();
 });

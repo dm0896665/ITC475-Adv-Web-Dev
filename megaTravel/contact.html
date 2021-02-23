@@ -48,6 +48,22 @@
 
                     <p>We would love to know more about your travel plans. Please fill out this contact form to get in
                         touch with a travel agent.</p>
+
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Select a location</label>
+                            <select id="locationDrop" class="form-control" id="exampleFormControlSelect1">
+                                <option value="newzealand">New Zealand</option>
+                                <option value="maldives">Maldives, South Asia</option>
+                                <option value="venice">Venice, Italy</option>
+                                <option value="cancun">Cancun</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" id="activityChecks"></div>
+                    </form>
+
+                    <p id="selectedActivities"></p>
                 </div>
             </div>
         </article>
@@ -58,6 +74,8 @@
             <p id="footerEmail">mega@travels.com</p>
         </footer>
     </div>
+
+    <script src="activities.js"></script>
 </body>
 
 </html>
