@@ -8,6 +8,8 @@
 /* Running Scripts */
 var currentTime;
 var updating;
+var activities = new Map();
+var activityList = [];
 
 //when DOM is loaded
 window.addEventListener('DOMContentLoaded', (event) => {
@@ -17,8 +19,28 @@ window.addEventListener('DOMContentLoaded', (event) => {
     //setup clock
     updating = setInterval(time, 1000);
 
+    //set up activities
+    addActivities();
 
+    //add click events
+    addEvents();
 });
+
+function addEvents() {
+    //set up event delegation
+    let locations = document.getElementById("locations");
+
+    locations.addEventListener('click', (e) => {
+        //get the place
+        let place = e.target.closest("div.location").id;
+
+        //do something the place that was clicked on
+        //update the list
+        activityList = activities.get(place);
+        updateActivityList();
+    });
+}
+
 
 function time() {
     //get time
