@@ -8,8 +8,6 @@
 /* Running Scripts */
 var currentTime;
 var updating;
-var activities = new Map();
-var activityList = [];
 
 //when DOM is loaded
 window.addEventListener('DOMContentLoaded', (event) => {
@@ -35,9 +33,6 @@ function addEvents() {
         let place = e.target.closest("div.location").id;
 
         //do something the place that was clicked on
-        //update the list
-        activityList = activities.get(place);
-        updateActivityList();
     });
 }
 
