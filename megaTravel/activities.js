@@ -8,16 +8,16 @@
 /* Running Scripts */
 var activities = new Map();
 var activityList = [];
-var selectedActivities = [];
+var selectedActivities = new Map();
 var locationString = "";
 
 //when DOM is loaded
 window.addEventListener('DOMContentLoaded', (event) => {
     //set location
-    locationString = "New Zealand";
+    locationString = "newzealand";
 
     //set up activities
-    addActivities();
+    initializeActivities();
 
     //add click events
     addEvents();
@@ -40,6 +40,7 @@ function addEvents() {
         //update the list
         if (a != activityList) {
             activityList = activities.get(place);
+            locationString = place;
             updateActivityList();
         }
     });
@@ -49,10 +50,6 @@ function makeCheckBoxes() {
     //create a form group
     var group = document.getElementById("activityChecks");
     group.innerHTML = "";
-
-    //empty selected activites
-    selectedActivities = [];
-    updateVisualActivityList();
 
     //create and add check boxes
     for (let i = 0; i < activityList.length; i++) {
@@ -90,12 +87,12 @@ function makeCheckBoxes() {
             //select/ deselect activity and update list
             if (flag) {
                 input.setAttribute('checked', 'checked');
-                selectedActivities.push(act);
+                selectedActivities.get(locationString).push(act);
             }
             else {
                 input.removeAttribute('checked');
-                let index = selectedActivities.indexOf(act);
-                selectedActivities.splice(index, 1);
+                let index = selectedActivities.get(locationString).indexOf(act);
+                selectedActivities.get(locationString).splice(index, 1);
             }
 
             //update visual list
@@ -105,17 +102,24 @@ function makeCheckBoxes() {
         //add container to group
         group.appendChild(box);
     }
+
+    //empty selected activites
+    updateVisualActivityList();
 }
 
 function updateVisualActivityList() {
     var list = document.getElementById("selectedActivities");
-    if (selectedActivities.length > 0) {
+
+    if (selectedActivities.get(locationString).length > 0) {
         list.innerHTML = "You selected these activities: ";
 
         //add activities with puncuation
-        for (let j = 0; j < selectedActivities.length; j++) {
-            list.innerHTML += selectedActivities[j];
-            list.innerHTML += (j != selectedActivities.length - 1) ? ", " : ".";
+        for (let j = 0; j < selectedActivities.get(locationString).length; j++) {
+            list.innerHTML += selectedActivities.get(locationString)[j];
+            list.innerHTML += (j != selectedActivities.get(locationString).length - 1) ? ", " : ".";
+
+            //update checcks
+            document.getElementById(selectedActivities.get(locationString)[j]).setAttribute('checked', 'checked');
         }
     }
     else {
@@ -124,15 +128,18 @@ function updateVisualActivityList() {
 }
 
 
-function addActivities() {
+function initializeActivities() {
     activities.set("newzealand", ["City Tours", "Sports", "Cycling", "Museums", "Boating"]);
     activities.set("maldives", ["Museums", "Sailing", "Beach", "Hiking", "Boating"]);
     activities.set("venice", ["Museums", "Theatre", "Parks and Recreation", "City Tours"]);
     activities.set("cancun", ["Parks and Recreation", "Beaches", "Boating", "Snorkeling"]);
+    selectedActivities.set("newzealand", []);
+    selectedActivities.set("maldives", []);
+    selectedActivities.set("venice", []);
+    selectedActivities.set("cancun", []);
     activityList = activities.get("newzealand");
 }
 
 function updateActivityList() {
-    console.log(activityList);
     makeCheckBoxes();
 }
