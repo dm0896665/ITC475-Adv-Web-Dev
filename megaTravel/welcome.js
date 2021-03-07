@@ -67,7 +67,7 @@ function visuallySetTime() {
         case (hours >= 0 && hours <= 11):
             message = "Good Morning";
             break;
-        case (hours >= 12 && (hours <= 4)):
+        case (hours >= 12 || (hours <= 4)):
             message = "Good Afternoon";
             break;
         case (hours == 17):
