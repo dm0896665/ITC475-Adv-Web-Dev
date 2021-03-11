@@ -1,0 +1,65 @@
+/*
+	Name: Dylan Mackey
+	Date: 3/12/2021
+	Assignment: Smart Home Simulator
+	Filename: style.css
+*/
+/***************** General *****************/
+#container
+{
+	width: 80%;
+	margin: auto;
+	margin-top: 30px;
+}
+.row
+{
+	width:100%;
+	margin:auto
+}
+
+
+/***************** Header *****************/
+#logoHolder
+{
+	background-color: #add8e6;
+}
+#title
+{
+	display:inline;
+	font-size:7vw;
+	position: relative;
+	top: 50px;
+}
+#separator
+{
+	padding: 10px;
+	background-color: #d3d3d3;
+}
+
+
+/***************** Navigation *****************/
+.nav-link {
+	text-align: center;
+	padding-left: 20px;
+}
+.navbar-nav {
+	padding: 20px;
+	padding-bottom: 0px;
+}
+.nav {
+	margin: auto;
+}
+ul, li
+{
+	display:inline;
+}
+a.nav-link
+{
+	color: black;
+}
+a.nav-link:hover 
+{
+	color: red;
+	margin-top: -10px;
+	transition: .5s;
+}
