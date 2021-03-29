@@ -49,20 +49,21 @@
                     <p>We would love to know more about your travel plans. Please fill out this contact form to get in
                         touch with a travel agent.</p>
 
-                    <form id="contactForm" class="needs-validation" novalidate>
+                    <form id="contactForm" class="needs-validation" novalidate action="confirm.php" method="POST">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-lg-6 col-xs-12">
                                     <label for="fName">First Name</label>
-                                    <input type="text" class="form-control" id="fName" placeholder="First Name"
-                                        required>
+                                    <input type="text" class="form-control" id="fName" name="fName"
+                                        placeholder="First Name" required>
                                     <div id="badFirst" class="invalid-feedback">
                                         Please enter a first name!
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-xs-12">
                                     <label for="lName">Last Name</label>
-                                    <input type="text" class="form-control" id="lName" placeholder="Last Name" required>
+                                    <input type="text" class="form-control" id="lName" name="lName"
+                                        placeholder="Last Name" required>
                                     <div id="badLast" class="invalid-feedback">
                                         Please enter a last name!
                                     </div>
@@ -73,15 +74,16 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <label for="email">Email address</label>
-                                    <input type="email" class="form-control" id="email" placeholder="name@example.com"
-                                        required>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        placeholder="name@example.com" required>
                                     <div id="badEmail" class="invalid-feedback">
                                         Please enter a valid email address!
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <label for="phone">Phone Number</label>
-                                    <input type="text" class="form-control" id="phone" placeholder="###-###-####">
+                                    <input type="text" class="form-control" id="phone" name="phone"
+                                        placeholder="###-###-####">
                                     <div id="badPhone" class="invalid-feedback">
                                         Please enter a valid phone number!
                                     </div>
@@ -92,22 +94,21 @@
                             <div class="row">
                                 <div class="col-lg-4 col-xs-12">
                                     <label for="travelDate">Travel Date</label>
-                                    <input type="date" class="form-control" id="travelDate" placeholder="###-###-####"
-                                        required>
+                                    <input type="date" class="form-control" id="travelDate" name="travelDate" required>
                                     <div id="badDate" class="invalid-feedback">
                                         Please enter a valid date!
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-xs-12">
                                     <label for="adults">Adults</label>
-                                    <input type="number" class="form-control" id="adults" required>
+                                    <input type="number" class="form-control" id="adults" name="adults" required>
                                     <div id="badAdult" class="invalid-feedback">
                                         Please enter how many adults are traveling!
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-xs-12">
                                     <label for="children">Kids</label>
-                                    <input type="number" class="form-control" id="children" required>
+                                    <input type="number" class="form-control" id="children" name="children" required>
                                     <div id="badChildren" class="invalid-feedback">
                                         Please enter how many children are traveling!
                                     </div>
@@ -115,7 +116,8 @@
                                 <div class="col-sm-12">
                                     <br />
                                     <label for="exampleFormControlSelect1">Travel location</label>
-                                    <select id="locationDrop" class="form-control" id="exampleFormControlSelect1">
+                                    <select id="locationDrop" name="locationDrop" class="form-control"
+                                        id="exampleFormControlSelect1">
                                         <option value="newzealand">New Zealand</option>
                                         <option value="maldives">Maldives, South Asia</option>
                                         <option value="venice">Venice, Italy</option>

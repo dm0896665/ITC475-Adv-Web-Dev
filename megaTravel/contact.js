@@ -195,6 +195,8 @@ function makeCheckBoxes() {
         let input = document.createElement("INPUT");
         input.classList.add("form-check-input");
         input.classList.add("activityBox");
+        input.setAttribute("name", "iActivities[]");
+        input.value = act;
         input.type = "checkbox";
         input.id = act;
 
