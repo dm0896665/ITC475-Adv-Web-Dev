@@ -87,6 +87,31 @@
                             }
                         ?><br>
                         An agent will be in touch with you soon!<br>
+                        
+                        <?php
+                        $servername='localhost';
+                        $username='root';
+                        $password='';
+                        $dbname = "mega_travel";
+                        
+                        $conn = new mysqli($servername, $username, $password, $dbname);
+                        if ($conn->connect_error) {
+                          die("Connection failed: " . $conn->connect_error);
+                        }
+                        $fName = $_POST['fName'];
+                        $lName = $_POST['lName'];
+                        $phone = $_POST['phone'];
+                        $email = $_POST['email'];
+                        $adults = $_POST['adults'];
+                        $children = $_POST['children'];
+                        $locationDrop = $_POST['locationDrop'];
+                        $travelDate = $_POST['travelDate'];
+                        $iActivities = json_encode($_POST['iActivities']);
+                        $sql = "INSERT INTO contacts (fName, lName, phone, email, adults, children, locationDrop, travelDate, iActivities)
+                        VALUES ('$fName','$lName','$phone','$email','$adults','$children','$locationDrop','$travelDate','$iActivities')";
+                        mysqli_query($conn, $sql);
+                        mysqli_close($conn);
+                        ?>
                     </div>
                 </div>
             </div>

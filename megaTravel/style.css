@@ -16,10 +16,14 @@ article
 	width:100%;
 	margin:auto
 }
-#submission
+#submission, .submissionRow
 {
 	border-style: double;
 	padding: 5px;
+}
+.submissionRow
+{
+	margin-bottom: 10px;
 }
 
 
