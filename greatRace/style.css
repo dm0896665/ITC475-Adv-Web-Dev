@@ -1,0 +1,80 @@
+/*
+	Name: Dylan Mackey
+	Date: 5/11/2021
+	Assignment: Great Race
+	Filename: style.css
+*/
+
+/* General Styles */
+body
+{
+	background-image: url("img/theTrack.png");
+    background-size: auto;
+    font-family: 'Racing Sans One', cursive;
+}
+#flag
+{
+    position: relative;
+    left: 1120px;
+    z-index: -1;
+}
+
+/* Runner Styles */
+#r2
+{
+    display: block;
+    position: relative;
+    top: -9em;
+}
+#r1
+{
+    position: relative;
+    top: -3em;
+}
+
+/* Selection Styles */
+#selection
+{
+    position: relative;
+    top: -70em;
+    width: 70%;
+    margin: auto;
+}
+#selectText
+{
+    text-align: center;
+}
+.selectMe
+{
+    border-radius: 70%;
+}
+.selectMe:hover
+{
+    background-color: rgba(255, 255, 0, .2);
+}
+.backgroundText {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    overflow: hidden;
+ }
+ .textWithBackground{
+     position: relative;
+ }
+
+/* Win Loss Styles */
+#standings
+{
+    display: flex;
+    float: right;
+    height: 20em;
+}
+#win
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
