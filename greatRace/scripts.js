@@ -9,16 +9,19 @@
 var running;
 var index1 = 0;
 var index2 = 0;
-var countD = 5;
+var countD = 3;
 var r1 = {
+    name: "",
     num: 1,
     won: false
 };
 var r2 = {
+    name: "",
     num: 2,
     won: false
 };
 var runnerArray = [r1, r2];
+var nameArray = ["Usain", "Pam", "Jim", "Shelly-Ann"];
 var won = false;
 var selected = 0;
 
@@ -37,7 +40,7 @@ function addEvents() {
         if (!won) {
             document.getElementById('light').src = "img/green.png";
 
-            running = setInterval(run, 5.5);
+            running = setInterval(run, 500);
         }
     });
 
@@ -60,9 +63,10 @@ function addEvents() {
             let id = e.target.id; runnerArray[0]
             if (id.includes("p")) {
                 runnerArray[selected].num = +id.charAt(1);
+                runnerArray[selected].name = nameArray[+id.charAt(1)];
                 selected++;
                 let runner = document.getElementById(id);
-                var css = "#" + id + "{background-color: rgba(0, 255, 0, .5);}";
+                var css = "#" + id + "{background-color: rgba(0, 255, 0, .5);opacity:1;} #" + id + "Text{display:block;}";
                 var style = document.createElement('style');
 
                 if (style.styleSheet) {
@@ -73,7 +77,7 @@ function addEvents() {
                 runner.appendChild(style);
 
                 if (selected == 2) {
-                    css = ".selectMe:hover{background-color: rgba(0, 255, 0, 0);}";
+                    css = ".selectMe:hover{background-color: rgba(0, 255, 0, 0);opacity:1;} .contentWithTextBackground:hover > .backgroundText{display:none;}";
                     style = document.createElement('style');
 
                     if (style.styleSheet) {
@@ -96,15 +100,14 @@ function countDown() {
         countD--;
     } else {
         clearInterval(running);
-        countD = 5;
+        countD = 3;
         initializeRace();
     }
-    console.log(countD);
 }
 
 function run() {
     if (index1 < 1120) {
-        index1 += Math.floor(Math.random() * 4);
+        index1 += Math.floor(Math.random() * 200);
         document.getElementById("r1").style.left = index1 + "px";
     }
     else {
@@ -121,7 +124,7 @@ function run() {
         declareWinner(w);
     }
     if (index2 < 1120) {
-        index2 += Math.floor(Math.random() * 4);
+        index2 += Math.floor(Math.random() * 200);
         document.getElementById("r2").style.left = index2 + "px";
     }
     else {
@@ -150,8 +153,8 @@ function declareWinner(winner) {
         runnerArray[0].won = true;
     }
     else {
-        document.getElementById('winner').src = "img/" + runnerArray[0].num + "w.png";
-        document.getElementById('loser').src = "img/" + runnerArray[1].num + "l.png";
+        document.getElementById('winner').src = "img/" + runnerArray[1].num + "w.png";
+        document.getElementById('loser').src = "img/" + runnerArray[0].num + "l.png";
         runnerArray[1].won = true;
     }
 
@@ -204,7 +207,7 @@ function insertStatsIntoDB() {
     $.ajax({
         type: 'post',
         url: 'http://localhost/greatrace/database.php',
-        data: { first: r1.num, second: (r1.won) ? r2.num : r1.num },
+        data: { first: r1.name, second: r2.name, winner: (r1.won) ? r1.name : r2.name },
         success: function (data) {
             console.log(data);
         }
@@ -221,7 +224,7 @@ function initializeRace() {
 }
 
 function initializeImages() {
-
+    index1, index2 = 0;
     document.getElementById('light').style = "display:none;";
     document.getElementById('flag').src = "img/blank.png";
     document.getElementById('selection').style = "";

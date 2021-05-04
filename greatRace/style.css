@@ -51,18 +51,28 @@ body
 .selectMe:hover
 {
     background-color: rgba(255, 255, 0, .2);
+    opacity: 0.5;
+}
+.backgroundText:hover + .selectMe{
+    background-color: rgba(255, 255, 0, .2);
+    opacity: 0.5;
 }
 .backgroundText {
+    display:none;
     position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: -1;
-    overflow: hidden;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5em;
+    text-align: center;
  }
- .textWithBackground{
+.contentWithTextBackground:hover > .backgroundText {
+    display:inline;
+ }
+ .contentWithTextBackground{
      position: relative;
+     display:inline;
+     border-radius: 70%;
  }
 
 /* Win Loss Styles */
