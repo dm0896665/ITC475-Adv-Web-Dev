@@ -19,47 +19,49 @@
 </head>
 
 <body>
-    <?php
-        $servername='localhost';
-        $username='root';
-        $password='';
-        $dbname = "great_race";
-        
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        if ($conn->connect_error) {
-          die("Connection failed: " . $conn->connect_error);
-        }
-
-        $sql = "SELECT * FROM races LIMIT 10";
-        $result = $conn->query($sql);
-
-        echo "<table class='table table-striped'>";
-        echo "<thead>";
-        echo "  <tr>";
-        echo "    <th scope='col'>Time</th>";
-        echo "    <th scope='col'>Racer One</th>";
-        echo "    <th scope='col'>Racer Two</th>";
-        echo "    <th scope='col'>Winner</th>";
-        echo "  </tr>";
-        echo "</thead>";
-        echo "<tbody>";
-
-        if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>"; echo $row["time"]; echo "</td>";
-                echo "<td>"; echo $row["first_racer"]; echo "</td>";
-                echo "<td>"; echo $row["second_racer"]; echo "</td>";
-                echo "<td>"; echo $row["winner"]; echo "</td>";
-                echo "</tr>";
+    <div id="container">
+        <?php
+            $servername='localhost';
+            $username='root';
+            $password='';
+            $dbname = "great_race";
+            
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
             }
-          } else {
-            echo "No Results found";
-          }
-          echo "</tbody>";
-          echo "</table>";
-          $conn->close();
-    ?>
+
+            $sql = "SELECT * FROM races LIMIT 10";
+            $result = $conn->query($sql);
+
+            echo "<table class='table table-striped'>";
+            echo "<thead>";
+            echo "  <tr>";
+            echo "    <th scope='col'>Time</th>";
+            echo "    <th scope='col'>Racer One</th>";
+            echo "    <th scope='col'>Racer Two</th>";
+            echo "    <th scope='col'>Winner</th>";
+            echo "  </tr>";
+            echo "</thead>";
+            echo "<tbody>";
+
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>"; echo $row["time"]; echo "</td>";
+                    echo "<td>"; echo $row["first_racer"]; echo "</td>";
+                    echo "<td>"; echo $row["second_racer"]; echo "</td>";
+                    echo "<td>"; echo $row["winner"]; echo "</td>";
+                    echo "</tr>";
+                }
+            } else {
+                echo "No Results found";
+            }
+            echo "</tbody>";
+            echo "</table>";
+            $conn->close();
+        ?>
+    </div>
 
     <script src="scripts.js"></script>
 </body>

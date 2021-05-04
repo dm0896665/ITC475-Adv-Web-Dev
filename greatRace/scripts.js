@@ -60,10 +60,10 @@ function addEvents() {
     //player click
     document.getElementById('selection').addEventListener('click', function (e) {
         if (selected < 2) {
-            let id = e.target.id; runnerArray[0]
+            let id = e.target.id; runnerArray[0];
             if (id.includes("p")) {
                 runnerArray[selected].num = +id.charAt(1);
-                runnerArray[selected].name = nameArray[+id.charAt(1)];
+                runnerArray[selected].name = nameArray[+id.charAt(1) - 1];
                 selected++;
                 let runner = document.getElementById(id);
                 var css = "#" + id + "{background-color: rgba(0, 255, 0, .5);opacity:1;} #" + id + "Text{display:block;}";
@@ -158,7 +158,7 @@ function declareWinner(winner) {
         runnerArray[1].won = true;
     }
 
-    //insertStatsIntoDB();
+    insertStatsIntoDB();
 }
 
 function insertStatsIntoDB() {
@@ -204,14 +204,27 @@ function insertStatsIntoDB() {
         })
     });
     */
+    var xhttp = new XMLHttpRequest();
+    var str_json = (JSON.stringify({ first: r1.name, second: r2.name, winner: (r1.won) ? r1.name : r2.name }));
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log("Successfully recorded " + ((r1.won) ? r1.name : r2.name) + "'s winning race.")
+        }
+    };
+    xhttp.open("POST", "http://localhost/ITC475-Adv-Web-Dev/greatrace/database.php", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(str_json);
+
+    /*
     $.ajax({
         type: 'post',
-        url: 'http://localhost/greatrace/database.php',
+        url: 'http://localhost/ITC475-Adv-Web-Dev/greatrace/database.php',
         data: { first: r1.name, second: r2.name, winner: (r1.won) ? r1.name : r2.name },
         success: function (data) {
             console.log(data);
         }
     });
+    */
 }
 
 function initializeRace() {
@@ -225,7 +238,7 @@ function initializeRace() {
 
 function initializeImages() {
     index1, index2 = 0;
-    document.getElementById('light').style = "display:none;";
+    //document.getElementById('light').style = "display:none;";
     document.getElementById('flag').src = "img/blank.png";
     document.getElementById('selection').style = "";
     document.getElementById('winner').src = "img/winBlank.png";
