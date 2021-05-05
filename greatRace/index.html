@@ -13,6 +13,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>The Great Race</title>
     <link href="https://fonts.googleapis.com/css?family=Racing+Sans+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -31,6 +33,10 @@
 
     <img src="img/blank.png" alt="light" id="light" height=350 />
 
+    <a id="toStats" href="/ITC475-Adv-Web-Dev/greatrace/stats.php">
+        <div class="btn btn-primary">Race Stats</div>
+    </a>
+
     <img src="img/blank.png" alt="flag" id="flag" height=350 />
 
     <div id="runners">
@@ -41,33 +47,34 @@
 
     <div id="selection">
         <h1 id="selectText">Select two runners!</h1>
-
-        <div class="contentWithTextBackground">
-            <div id="p1Text" class="backgroundText">
-                Usain
+        <div class="d-flex justify-content-center">
+            <div class="contentWithTextBackground">
+                <div id="p1Text" class="backgroundText">
+                    Usain
+                </div>
+                <img src="img/1r.png" alt="1st runner" id="p1" class="selectMe" />
             </div>
-            <img src="img/1r.png" alt="1st runner" id="p1" class="selectMe" />
-        </div>
-        <div class="contentWithTextBackground">
-            <div id="p2Text" class="backgroundText">
-                Pam
+            <div class="contentWithTextBackground">
+                <div id="p2Text" class="backgroundText">
+                    Pam
+                </div>
+                <img src="img/2r.png" alt="2nd runner" id="p2" class="selectMe" />
             </div>
-            <img src="img/2r.png" alt="2nd runner" id="p2" class="selectMe" />
-        </div>
-        <div class="contentWithTextBackground">
-            <div id="p3Text" class="backgroundText">
-                Jim
+            <div class="contentWithTextBackground">
+                <div id="p3Text" class="backgroundText">
+                    Jim
+                </div>
+                <img src="img/3r.png" alt="3rd runner" id="p3" class="selectMe" />
             </div>
-            <img src="img/3r.png" alt="3rd runner" id="p3" class="selectMe" />
-        </div>
-        <div class="contentWithTextBackground">
-            <div id="p4Text" class="backgroundText">
-                Shelly-Ann
+            <div class="contentWithTextBackground">
+                <div id="p4Text" class="backgroundText">
+                    Shelly-Ann
+                </div>
+                <img src="img/4r.png" alt="4th runner" id="p4" class="selectMe" />
             </div>
-            <img src="img/4r.png" alt="4th runner" id="p4" class="selectMe" />
         </div>
-
     </div>
+
 
     <script src="scripts.js"></script>
 </body>

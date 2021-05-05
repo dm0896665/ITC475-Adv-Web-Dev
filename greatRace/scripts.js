@@ -162,69 +162,16 @@ function declareWinner(winner) {
 }
 
 function insertStatsIntoDB() {
-    /*
-    const express = require('express')
-    const bodyParser = require('body-parser')
-    const mysql = require('mysql')
-
-    const app = express()
-    const port = process.env.PORT || 5000;
-
-    // parse application/x-www-form-urlencoded
-    app.use(bodyParser.urlencoded({ extended: false }))
-
-    // parse application/json
-    app.use(bodyParser.json())
-
-    const pool  = mysql.createPool({
-        connectionLimit : 10,
-        host            : 'localhost',
-        user            : 'root',
-        password        : '',
-        database        : 'great_race'
-    })
-
-    app.post('', (req, res) => {
-
-        pool.getConnection((err, connection) => {
-            if(err) throw err;
-            
-            const params = req.body;
-            connection.query('INSERT INTO races SET ?', params, (err, rows) => {
-            connection.release() // return the connection to pool
-            if (!err) {
-                res.send(`Beer with the record ID  has been added.`)
-            } else {
-                console.log(err)
-            }
-            
-            console.log('The data from beer table are:11 \n', rows)
-    
-            })
-        })
-    });
-    */
     var xhttp = new XMLHttpRequest();
     var str_json = (JSON.stringify({ first: r1.name, second: r2.name, winner: (r1.won) ? r1.name : r2.name }));
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log("Successfully recorded " + ((r1.won) ? r1.name : r2.name) + "'s winning race.")
+            console.log("Successfully recorded " + ((r1.won) ? r1.name : r2.name) + "'s winning race.");
         }
     };
-    xhttp.open("POST", "http://localhost/ITC475-Adv-Web-Dev/greatrace/database.php", true);
+    xhttp.open("POST", "http://localhost/ITC475-Adv-Web-Dev/greatrace/addRace.php", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(str_json);
-
-    /*
-    $.ajax({
-        type: 'post',
-        url: 'http://localhost/ITC475-Adv-Web-Dev/greatrace/database.php',
-        data: { first: r1.name, second: r2.name, winner: (r1.won) ? r1.name : r2.name },
-        success: function (data) {
-            console.log(data);
-        }
-    });
-    */
 }
 
 function initializeRace() {
@@ -238,7 +185,7 @@ function initializeRace() {
 
 function initializeImages() {
     index1, index2 = 0;
-    //document.getElementById('light').style = "display:none;";
+    document.getElementById('light').style = "display:none;";
     document.getElementById('flag').src = "img/blank.png";
     document.getElementById('selection').style = "";
     document.getElementById('winner').src = "img/winBlank.png";
