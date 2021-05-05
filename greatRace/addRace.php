@@ -1,3 +1,9 @@
+<!--
+            Name: Dylan Mackey
+            Date: 5/11/2021
+            Assignment: Great Race
+            Filename: addRace.php
+        -->
 <?php
     $servername='localhost';
     $username='root';

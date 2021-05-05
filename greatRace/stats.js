@@ -29,7 +29,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 function addEvents() {
     //first Runner
     firstRunnerEle.addEventListener('click', function (e) {
-        //get the place
+        //make sure the value changes
         if (firstRunner != firstRunnerEle.value) {
             firstRunner = firstRunnerEle.value;
 
@@ -40,7 +40,7 @@ function addEvents() {
 
     //second Runner
     secondRunnerEle.addEventListener('click', function (e) {
-        //get the place
+        //make sure the value changes
         if (secondRunner != secondRunnerEle.value) {
             secondRunner = secondRunnerEle.value;
 
@@ -51,9 +51,12 @@ function addEvents() {
 }
 
 function updateSelectionLists() {
+    //initialize variables
     nameInUseArray = [firstRunner, secondRunner];
     let group = document.getElementById("runners");
     group.innerHTML = "";
+
+    //add racers name for first racer
     let sel = document.createElement('select');
     sel.classList.add("form-control");
     for (let i = 0; i < nameArray.length; i++) {
@@ -75,6 +78,7 @@ function updateSelectionLists() {
     col.appendChild(sel);
     row.appendChild(col);
 
+    //add racers name for second racer
     let sel2 = document.createElement('select');
     sel2.classList.add("form-control");
     for (let i = 0; i < nameArray.length; i++) {
@@ -95,11 +99,14 @@ function updateSelectionLists() {
     row.appendChild(col);
     group.appendChild(row);
 
+    //update header
     document.getElementById("ten").innerHTML = "Last 10 Races of " + firstRunner + " vs " + secondRunner;
 
+    //update elements and events on them
     firstRunnerEle = document.getElementById('firstRunner');
     secondRunnerEle = document.getElementById('secondRunner');
     addEvents();
 
+    //update changes
     postChange();
 }
