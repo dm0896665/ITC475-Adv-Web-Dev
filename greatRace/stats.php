@@ -62,7 +62,7 @@
                     die("Connection failed: " . $conn->connect_error);
                     }
 
-                    $sql = "SELECT * FROM races LIMIT 5";
+                    $sql = "SELECT * FROM races ORDER BY `time` DESC LIMIT 5";
                     $result = $conn->query($sql);
 
                     echo "<table class='table table-striped'>";

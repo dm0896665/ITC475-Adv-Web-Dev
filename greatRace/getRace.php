@@ -18,7 +18,7 @@
     $data = json_decode($json, true);
     $first = $data["first"];
     $second = $data["second"];
-    $sql = "SELECT * FROM races WHERE ((first_racer = '{$first}' AND second_racer = '{$second}') OR (first_racer = '{$second}' AND second_racer = '{$first}'))LIMIT 10";
+    $sql = "SELECT * FROM races WHERE ((first_racer = '{$first}' AND second_racer = '{$second}') OR (first_racer = '{$second}' AND second_racer = '{$first}')) ORDER BY `time` DESC LIMIT 10";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
